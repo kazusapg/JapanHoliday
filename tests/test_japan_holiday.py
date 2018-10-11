@@ -22,17 +22,18 @@ class TestReadHoliday(unittest.TestCase):
 
 
 class TestIsHoliday(unittest.TestCase):
+    def setUp(self):
+        self.jpholiday = JapanHoliday(CSV_FILE_NAME)
+
     def test_is_holiday(self):
-        jpholiday = JapanHoliday(CSV_FILE_NAME)
-        self.assertTrue(jpholiday.is_holiday('2018-01-01'))  # 元日（祝）
-        self.assertTrue(jpholiday.is_holiday('2018-01-06'))  # 土曜日
-        self.assertTrue(jpholiday.is_holiday('2018-01-07'))  # 日曜日
-        self.assertFalse(jpholiday.is_holiday('2018-01-09'))  # 火曜日
+        self.assertTrue(self.jpholiday.is_holiday('2018-01-01'))  # 元日（祝）
+        self.assertTrue(self.jpholiday.is_holiday('2018-01-06'))  # 土曜日
+        self.assertTrue(self.jpholiday.is_holiday('2018-01-07'))  # 日曜日
+        self.assertFalse(self.jpholiday.is_holiday('2018-01-09'))  # 火曜日
 
     def test_is_holiday_wrong_day_format(self):
-        jpholiday = JapanHoliday(CSV_FILE_NAME)
         with self.assertRaises(ValueError):
-            jpholiday.is_holiday('2018/01/01')
+            self.jpholiday.is_holiday('2018/01/01')
 
 
 class TestGetHolidayList(unittest.TestCase):
