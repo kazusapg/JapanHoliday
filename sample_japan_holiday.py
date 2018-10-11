@@ -2,7 +2,7 @@ from japan_holiday import JapanHoliday
 
 holiday = JapanHoliday()
 
-print(holiday.is_holiday('2018-01-04'))  # 平日木曜日なのでTrue
+print(holiday.is_holiday('2018-01-04'))  # 平日木曜日なのでFalse
 print(holiday.is_holiday('2018-01-06'))  # 土曜日なのでTrue
 print(holiday.is_holiday('2018-01-07'))  # 日曜日なのでTrue
 print(holiday.is_holiday('2018-01-07'))  # 祝日成人の日なのでTrue
